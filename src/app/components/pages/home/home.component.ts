@@ -22,7 +22,7 @@ export class HomeComponent {
   constructor(private momentService: MomentService) {}
 
   ngOnInit(): void {
-    this.momentService.getMoment().subscribe((items) => {
+    this.momentService.getMoments().subscribe((items) => {
       const data = items.data
 
       data.map((item) => {
