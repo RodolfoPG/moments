@@ -32,14 +32,20 @@ export class NewMomentComponent {
 
     // todo
     
-    // enviar para o service
-    await this.momentService.createMoment(formData).subscribe()
+    // enviar para o service; implementação feita para tirar o 'await', 
+    // que não se aplica na expressão abaixo nas versões mais recentes do angular.
+    this.momentService.createMoment(formData).subscribe({
+      next: () => {
+        this.messageService.add("Momento adicionado com sucesso!")
+        this.router.navigate(['/'])
+      }
+    })
 
-    // exiber msg
-    this.messageService.add("Momento adicionado com sucesso!")
+    // // exiber msg
+    // this.messageService.add("Momento adicionado com sucesso!")
 
-    // redirect
-    this.router.navigate(['/'])
+    // // redirect
+    // this.router.navigate(['/'])
   }
 
 }
